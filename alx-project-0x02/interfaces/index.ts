@@ -17,7 +17,27 @@ export interface ButtonProps {
 }
 
 export interface PostProps {
-    title: string;
-    content: string;
-    userId: number;
+  title: string;
+  content: string;
+  userId: number;
 }
+
+export interface PostData {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+}
+
+export interface PostsPageProps {
+  posts: PostData[];
+}
+
+export interface UserProps {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    phone: string;
+}
+
