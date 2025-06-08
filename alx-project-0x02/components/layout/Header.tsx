@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import React from 'react';
+
 function Header() {
   return (
     <header className="bg-gray-800 text-white p-4">
@@ -5,9 +8,8 @@ function Header() {
         <h1 className="text-xl font-bold">My Application</h1>
         <nav>
           <ul className="flex space-x-4">
-            <li><a href="/" className="hover:underline">Home</a></li>
-            <li><a href="/about" className="hover:underline">About</a></li>
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
+            <li><Link href="/home" className="hover:underline">Home</Link></li>
+            <li><Link href="/about" className="hover:underline">About</Link></li>
           </ul>
         </nav>
       </div>
