@@ -1,12 +1,16 @@
 import Header from '@/components/layout/Header';
+import Card from '@/components/common/Card';
 
 function Home() {
   return (
     <>
       <Header />
       <div>
-        <h1>Home Page</h1>
-        <p>This is the about page of our application.</p>
+        <Card
+          id= {crypto.randomUUID()}
+          title="Welcome to My Application"
+          content="This is a simple card component that displays a title and some content."
+        />
       </div>
     </>
   );
