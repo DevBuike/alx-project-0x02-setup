@@ -1,23 +1,37 @@
 import Header from '@/components/layout/Header';
-import Card from '@/components/common/Card';
-import {useMemo} from 'react';
-import Button from '@/components/common/Button';
-// import { ButtonProps } from '@/interfaces'; // Uncomment if you need to use ButtonProps
+import {useMemo, useState, useEffect} from 'react';
+import PostCard from '@/components/common/PostCard';
+
+
+interface PostData {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+}
 
 function Posts() {
-  const cardId = useMemo(() => crypto.randomUUID(), []);
+  // State to hold posts data
+  const [posts, setPosts] = useState<PostData[]>([]);
+
+  // Fetching posts data from the API
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((data) => setPosts(data.slice(0, 10))); // Fetch first 10 posts for display
+  }, []);
 
   return (
     <>
       <Header />
-      <div>
-        <Card
-          id= {cardId}
-          title="This is the posts page of My Application"
-          content="This is a simple card component that displays a title and some content."
-        />
+      <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">Posts</h1>
+        {posts.map((post) => (
+          <PostCard key={post.id} title={post.title} content={post.body} userId={post.userId} />
+        ))}
       </div>
     </>
   );
 }
+
 export default Posts;
